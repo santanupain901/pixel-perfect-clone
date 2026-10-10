@@ -3,11 +3,11 @@
  * The backend owns the HMAC secret and tokenization. Only the public base URL
  * is configured in the frontend (VITE_API_BASE_URL) — never secrets.
  */
-const BASE = import.meta.env.VITE_API_BASE_URL as string | undefined;
+const BASE = import.meta.env["VITE_API_BASE_URL"] as string | undefined;
 
 export type ApiStatus =
   | { state: "not_configured" }
-  | { state: "connected"; version?: string }
+  | { state: "connected"; version?: string | undefined }
   | { state: "error"; message: string };
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {

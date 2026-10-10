@@ -39,6 +39,7 @@ function ReviewPage() {
   const c = list[idx];
 
   const decide = (s: "Approved" | "Rejected") => {
+    if (!c) return;
     setStatus(c.id, s);
     toast[s === "Approved" ? "success" : "info"](`Candidate ${s.toLowerCase()}`, { description: "Decision recorded. Records remain separate — no merge performed." });
   };
